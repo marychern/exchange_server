@@ -88,6 +88,7 @@ class ProtocolMessageServer(object):
                 break
 
             client_msg = message_type.from_bytes(payload_bytes, header=False)
+            print("Message recieved from client: %s" % str(client_msg))
             client_msg.meta = client_token
             await self.broadcast_to_listeners(client_msg)
             
